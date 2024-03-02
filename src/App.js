@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-function App() {
+import "./App.css";
+
+const App = () => {
+  const [advice, setAdvice] = useState("");
+
+  useEffect(() => {
+    fetchAdvice();
+  }, []);
+
+  const fetchAdvice = () => {
+    axios
+      .get("https://api.adviceslip.com/advice")
+      .then((response) => {
+        const { advice } = response.data.slip;
+        setAdvice(advice);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+    <>
+      <div className="app">
+        <div className="card">
+          <h1 className="heading">{advice}</h1>
+          <button className="button" onClick={fetchAdvice}>
+            <span>GIVE ME ADVICE!</span>
+          </button>
+        </div>
+
+        <footer className="footer">
+        Made with{" "}
+        <span role="img" aria-label="heart">
+          ❤️
+        </span>{" "}
+        by{" "}
         <a
-          className="App-link"
-          href="https://reactjs.org"
+          href="https://akib-portfolio.onrender.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Akib
         </a>
-      </header>
-    </div>
+      </footer>
+      </div>
+
+     
+    </>
   );
-}
+};
 
 export default App;
