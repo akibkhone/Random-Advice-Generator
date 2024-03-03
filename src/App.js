@@ -33,22 +33,19 @@ const App = () => {
         </div>
 
         <footer className="footer">
-        Made with{" "}
-        <span role="img" aria-label="heart">
-          ❤️
-        </span>{" "}
-        by{" "}
-        <a
-          href="https://akib-portfolio.onrender.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Akib
-        </a>
-      </footer>
+          Made with{" "}
+          <span role="img" aria-label="heart">
+            ❤️
+          </span>
+          <a
+            href="https://akib-portfolio.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Akib
+          </a>
+        </footer>
       </div>
-
-     
     </>
   );
 };
